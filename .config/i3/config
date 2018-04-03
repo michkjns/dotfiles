@@ -18,6 +18,7 @@ exec --no-startup-id mpd
 exec --no-startup-id mpdscribble
 exec_always --no-startup-id python /home/mic/.config/i3/scripts/borderfocus.py
 exec xfce4-terminal irssi
+exec setxkbmap -option caps:escape
 set $mod Mod4
 
 ## AUDIO ## 
@@ -86,6 +87,13 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# Resize
+bindsym $mod+Shift+u	resize shrink width 5 px or 5 ppt
+bindsym $mod+Shift+i	resize shrink height 5 px or 5 ppt
+bindsym $mod+Shift+o	resize grow height 5 px or 5 ppt
+bindsym $mod+Shift+p	resize grow width 5 px or 5 ppt
+
 
 # split in horizontal orientation
 bindsym $mod+c split h
@@ -184,7 +192,7 @@ bindsym $mod+F1 exec qutebrowser --backend webengine
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 0
 #for_window [instance="__focused__"] border pixel 5
-# hide_edge_borders both
+hide_edge_borders both
 
 # Smart Gaps
 smart_gaps on
