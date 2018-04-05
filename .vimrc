@@ -30,26 +30,37 @@ endfunction
 colorscheme InsertEnter * :call ToggleCurLine()
 colorscheme InsertLeave * :call ToggleCurLine()
 
+" Aliases
+command W w
+command V e ~/.vimrc
+
 " Remaps
 nnoremap ;o o<Enter><Esc>ki
 nnoremap ;O O<Enter><Enter><Esc>ki
+nnoremap <C-p> :vertical resize +10<CR>
+nnoremap <C-u> :vertical resize -10<CR>
 
+nnoremap <S-tab> :bN<CR>
+nnoremap <S-q> :bn<CR>
 inoremap <C-A> <C-Space>
 nnoremap <S-j> <C-d> 
 nnoremap <S-k> <C-u> 
+nnoremap cw ciw
 nnoremap <S-u> :join<CR>
-nnoremap <C-q> :FSHere<CR>
+nnoremap <C-w> :w<CR>
+nnoremap <C-q> :q<CR>
+" nnoremap <C-q> :FSHere<CR>
 
 vnoremap w vbve
 vnoremap p "_dP
 
-nnoremap <C-h> <C-W><C-h>
-nnoremap <C-j> <C-W><C-j>
-nnoremap <C-k> <C-W><C-k>
-nnoremap <C-l> <C-W><C-l>
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
 
 let g:user_emmet_leader_key='<C-e>'
-let g:ctrlp_map = '<C-p>'
+let g:ctrlp_map = '<C-o>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_extensions =  ['line', 'dir']
 

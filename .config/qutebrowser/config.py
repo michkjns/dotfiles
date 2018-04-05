@@ -100,3 +100,7 @@ config.bind('<ctrl-l>', 'forward')
 config.bind('<Shift-l>', 'tab-next')
 config.bind('<Shift-h>', 'tab-prev')
 c.url.start_pages = 'about:blank'
+
+# Aliases
+c.aliases['mpv'] = 'spawn mpv {url}'
+c.aliases['yt'] = 'open https://youtube.com'

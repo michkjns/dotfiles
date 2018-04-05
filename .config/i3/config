@@ -17,7 +17,10 @@ exec /home/mic/./.fehbg
 exec --no-startup-id mpd
 exec --no-startup-id mpdscribble
 exec_always --no-startup-id python /home/mic/.config/i3/scripts/borderfocus.py
-exec xfce4-terminal irssi
+exec i3-msg "workspace  M; append_layout ~/.config/i3/workspace-1.json"
+exec xfce4-terminal -e ncmpcpp
+exec irssi
+
 exec setxkbmap -option caps:escape
 set $mod Mod4
 
@@ -55,7 +58,7 @@ bindsym $mod+Return exec xfce4-terminal --hide-borders --hide-toolbar --hide-men
 #bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec dmenu_run
@@ -105,8 +108,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
