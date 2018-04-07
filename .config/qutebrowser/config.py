@@ -37,7 +37,9 @@ c.search.ignore_case = 'smart'
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://startpage.com/do/search?q={}',
 						'yt': 'https://youtube.com/results?search_query={}',
-						'8ch': 'https://8ch.net/{}'}
+						'8ch': 'https://8ch.net/{}',
+                                                'osm': 'https://www.openstreetmap.org/search?query={}',
+                                                'bing': 'https://www.bing.com/search?q={}'}
 
 # Editor (and arguments) to use for the `open-editor` command. The
 # following placeholders are defined: * `{file}`: Filename of the file
