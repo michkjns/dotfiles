@@ -108,3 +108,11 @@ c.aliases['mpv'] = 'spawn mpv {url}'
 c.aliases['yt'] = 'open https://youtube.com'
 
 c.content.host_blocking.lists.append( str(config.configdir) + "/blocked_hosts")
+
+# Colors
+c.colors.tabs.selected.even.bg = '#4c7899'
+c.colors.tabs.selected.odd.bg = '#4c7899'
+c.colors.tabs.even.bg = '#444444'
+c.colors.tabs.odd.bg = '#444444'
+
+
