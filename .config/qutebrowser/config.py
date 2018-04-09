@@ -106,3 +106,5 @@ c.url.start_pages = 'about:blank'
 # Aliases
 c.aliases['mpv'] = 'spawn mpv {url}'
 c.aliases['yt'] = 'open https://youtube.com'
+
+c.content.host_blocking.lists.append( str(config.configdir) + "/blocked_hosts")
