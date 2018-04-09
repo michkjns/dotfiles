@@ -113,6 +113,6 @@ c.content.host_blocking.lists.append( str(config.configdir) + "/blocked_hosts")
 c.colors.tabs.selected.even.bg = '#4c7899'
 c.colors.tabs.selected.odd.bg = '#4c7899'
 c.colors.tabs.even.bg = '#444444'
-c.colors.tabs.odd.bg = '#444444'
+c.colors.tabs.odd.bg = '#242424'
 
 
