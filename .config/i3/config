@@ -9,17 +9,20 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $VolChangeSignal 1
+set $volChangeSignal 1
+set $term            st
+set $webbrowser      qutebrowser
+set $irc             irssi
 
 # Autostart on startup
 exec compton
 exec /home/mic/./.fehbg
-exec --no-startup-id mpd
-exec --no-startup-id mpdscribble
-exec_always --no-startup-id python /home/mic/.config/i3/scripts/borderfocus.py
-exec i3-msg "workspace  M; append_layout ~/.config/i3/workspace-1.json"
-exec xfce4-terminal -e ncmpcpp
-exec irssi
+exec i3-msg "workspace 1; append_layout ~/.config/i3/workspace-1.json"
+exec mpd
+exec $term -e ncmpcpp -s browser -c browser.conf
+exec $term -e $irc
+#exec $term -e ncmpcpp -s playlist
+#exec_always --no-startup-id python /home/mic/.config/i3/scripts/borderfocus.py
 
 exec setxkbmap -option caps:escape
 set $mod Mod4
@@ -54,7 +57,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal --hide-borders --hide-toolbar --hide-menubar --title=desktopconsole --geometry=130x44+0+0 &
+bindsym $mod+Return exec $term 
 #bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -67,11 +70,20 @@ bindsym $mod+space exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# workspace focus
+bindsym $mod+p workspace prev
+bindsym $mod+n workspace next
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym $mod+i 					[title="(?i)irssi.*"] focus
+bindsym $mod+m 					[title="(?i)ncmpcpp.*"] focus
+bindsym $mod+Home 				scratchpad show
+bindsym $mod+End 				move scratchpad
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -92,11 +104,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Resize
-bindsym $mod+Shift+u	resize shrink width 5 px or 5 ppt
-bindsym $mod+Shift+i	resize shrink height 5 px or 5 ppt
-bindsym $mod+Shift+o	resize grow height 5 px or 5 ppt
-bindsym $mod+Shift+p	resize grow width 5 px or 5 ppt
-
+bindsym $mod+bracketleft			resize shrink width 5 px or 5 ppt
+bindsym $mod+Shift+bracketleft		resize shrink height 5 px or 5 ppt
+bindsym $mod+Shift+bracketright		resize grow height 5 px or 5 ppt
+bindsym $mod+bracketright			resize grow width 5 px or 5 ppt
 
 # split in horizontal orientation
 bindsym $mod+c split h
@@ -113,10 +124,10 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -188,17 +199,17 @@ bar {
 	status_command i3blocks 
 }
 
-bindsym $mod+F1 exec qutebrowser --backend webengine
+bindsym $mod+F1 exec $webbrowser 
 
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 #for_window [instance="__focused__"] border pixel 5
 hide_edge_borders both
 
 # Smart Gaps
-smart_gaps on
+#smart_gaps on
 
 # Smart Borders
 smart_borders on
@@ -208,8 +219,14 @@ client.focused_inactive #000000 #000000 #000000 #000000 #000000
 client.unfocused        #000000 #000000 #000000 #000000 #000000
 #client.focused			#ffffff #000000 #000000 #ffffff
 
+
+for_window [instance="floater"] floating enable
+#for_window [instance="floater"] 
+
+
+
 # Set inner/outer gaps
-gaps inner 15
+gaps inner 10
 gaps outer 15
 
 # Gaps mode
