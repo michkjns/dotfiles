@@ -9,6 +9,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'qpkorr/vim-renamer'
+Plug 'lifepillar/pgsql.vim'
 call plug#end()
 
 filetype plugin indent on " required
