@@ -37,8 +37,8 @@ command V e ~/.vimrc
 " Remaps
 nnoremap ;o o<Enter><Esc>ki
 nnoremap ;O O<Enter><Enter><Esc>ki
-nnoremap <C-p> :vertical resize +10<CR>
-nnoremap <C-u> :vertical resize -10<CR>
+nnoremap [v :vertical resize +10<CR>
+nnoremap ]v :vertical resize -10<CR>
 
 nnoremap <S-tab> :bN<CR>
 nnoremap <S-q> :bn<CR>
@@ -49,9 +49,9 @@ nnoremap cw ciw
 nnoremap <S-u> :join<CR>
 nnoremap <C-w> :w<CR>
 nnoremap <C-q> :q<CR>
+nnoremap <C-q><C-q> :q!<CR>
 " nnoremap <C-q> :FSHere<CR>
 
-vnoremap w vbve
 vnoremap p "_dP
 
 nnoremap <C-h> :wincmd h<CR>
