@@ -112,7 +112,7 @@ tnoremap <Esc> <C-\><C-n>
 
 " == Plugins ==
 " Airline
-let g:airline#extensions#tabline#enbaled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
