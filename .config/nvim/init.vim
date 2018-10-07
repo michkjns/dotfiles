@@ -43,7 +43,6 @@ set background=dark
 set colorcolumn=80
 set termguicolors
 syntax on
-let g:gruvbox_bold = '1'
 
 " CursorLine
 function! ToggleCurLine ()
