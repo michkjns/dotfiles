@@ -1,4 +1,4 @@
-" =============================================================================
+" =============================================================================   " 
 " ================================ Load Plugins  ==============================
 if has('win32')
 	call plug#begin('~/AppData/Local/nvim/plugins')
@@ -66,7 +66,7 @@ autocmd InsertLeave * :call ToggleCurLine()
 " ================================ Aliases ====================================
 command! Config e $MYVIMRC
 command! W write
-command! E e
+command! Cd lcd %:p:h
 
 " =============================================================================
 " ================================ Remappings =================================
@@ -97,7 +97,7 @@ nnoremap <C-w> :w<CR>
 nnoremap <C-q> :q<CR>
 nnoremap <C-q><C-q> :q!<CR>
 
-" Nearest pair
+" Nearest pair       " now: targets.vim
 "nnoremap ci" f"ci"
 " nnoremap ci) f)ci)
 " nnoremap ci( f)ci(
@@ -120,6 +120,8 @@ nnoremap <C-l> :wincmd l<CR>
 
 " fugitive
 nnoremap <leader>gs :Gstatus<CR>
+
+nnoremap <C-p> :Lexplore<CR>
 
 " don't remember
 "inoremap <C-A> <C-Space>
