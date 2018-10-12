@@ -1,4 +1,5 @@
-" == Plugins ==
+" =============================================================================
+" ================================ Load Plugins  ==============================
 if has('win32')
 	call plug#begin('~/AppData/Local/nvim/plugins')
 else
@@ -6,7 +7,8 @@ else
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'Valloric/YouCompleteMe'
 endif
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'wellle/targets.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
@@ -14,6 +16,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'kaicataldo/material.vim'
 Plug 'lifepillar/pgsql.vim'
+Plug 'machakann/vim-highlightedyank'
 Plug 'morhetz/gruvbox'
 Plug 'qpkorr/vim-renamer'
 Plug 'srcery-colors/srcery-vim'
@@ -23,19 +26,22 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
-"filetype plugin indent on " required
-
-" == General Settings ==
-"set laststatus=2 "replaced by airline?
-set autochdir
+" =============================================================================
+" ================================ General Settings ===========================
+" set autochdir
 set autoindent
 set clipboard+=unnamedplus
+set inccommand=nosplit
 set list
+set nocompatible
 set number
+set path+=**
 set relativenumber
 set shiftwidth=4
 set tabstop=4
+set backspace=indent,eol,start
 set wildmenu
+filetype plugin on
 
 "" == Colors and Syntax ==
 colorscheme gruvbox
@@ -56,18 +62,27 @@ endfunction
 autocmd InsertEnter * :call ToggleCurLine()
 autocmd InsertLeave * :call ToggleCurLine()
 
-"" ==  Aliases == 
+" =============================================================================
+" ================================ Aliases ====================================
 command! Config e $MYVIMRC
 command! W write
+command! E e
 
-"" ==  Remaps == 
-" edit vim config in new split
+" =============================================================================
+" ================================ Remappings =================================
+" Edit vim config in new split
 nnoremap <silent> <leader>ec :vs $MYVIMRC<CR>
 
 nnoremap ;o o<Enter><Esc>ki
 nnoremap ;O O<Enter><Enter><Esc>ki
 nnoremap [v :vertical resize +10<CR>
 nnoremap ]v :vertical resize -10<CR>
+
+" Vimgrep next / previous result
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :cprev<CR>
+nnoremap ]Q :cnext<CR>
 
 " Cycle buffers
 nnoremap <S-tab> :bN<CR>
@@ -82,17 +97,17 @@ nnoremap <C-w> :w<CR>
 nnoremap <C-q> :q<CR>
 nnoremap <C-q><C-q> :q!<CR>
 
-"
-nnoremap ci" f"ci"
-nnoremap ci) f)ci)
-nnoremap ci( f)ci(
-nnoremap ci{ f}ci{
-nnoremap ci} f}ci}
-nnoremap vi" f"vi"
-nnoremap vi) f)vi)
-nnoremap vi( f)vi(
-nnoremap vi{ f)vi{
-nnoremap vi} f)vi}
+" Nearest pair
+"nnoremap ci" f"ci"
+" nnoremap ci) f)ci)
+" nnoremap ci( f)ci(
+" nnoremap ci{ f}ci{
+" nnoremap ci} f}ci}
+" nnoremap vi" f"vi"
+" nnoremap vi) f)vi)
+" nnoremap vi( f)vi(
+" nnoremap vi{ f)vi{
+" nnoremap vi} f)vi}
 
 " Don't yank when pasting
 vnoremap p "_dP
@@ -103,6 +118,9 @@ nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
 
+" fugitive
+nnoremap <leader>gs :Gstatus<CR>
+
 " don't remember
 "inoremap <C-A> <C-Space>
 
@@ -110,7 +128,8 @@ nnoremap <C-l> :wincmd l<CR>
 nnoremap <Leader>] :botright new<CR>:term<CR>i
 tnoremap <Esc> <C-\><C-n>
 
-" == Plugins ==
+" =============================================================================
+" ================================ Plugins ====================================
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 
@@ -125,6 +144,11 @@ nmap / <Plug>(incsearch-easymotion-/)
 " jedi
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#documentation_command = "gd"
+
+" netrw
+let g:netrw_banner=0    " hide banner
+let g:netrw_liststyle=3 " tree view
+let g:netrw_browse_split=4
 
 " vim-go
 let g:go_highlight_functions = 1
