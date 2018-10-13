@@ -44,7 +44,6 @@ set background=dark
 set colorcolumn=80
 set termguicolors
 syntax on
-let g:gruvbox_bold = '1'
 
 " CursorLine
 function! ToggleCurLine ()
@@ -114,7 +113,7 @@ tnoremap <Esc> <C-\><C-n>
 
 " == Plugins ==
 " Airline
-let g:airline#extensions#tabline#enbaled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'gruvbox'
 
 " CtrlP
