@@ -36,6 +36,7 @@ set relativenumber
 set shiftwidth=4
 set tabstop=4
 set wildmenu
+set mouse=a
 
 "" == Colors and Syntax ==
 colorscheme gruvbox
@@ -114,6 +115,7 @@ tnoremap <Esc> <C-\><C-n>
 " == Plugins ==
 " Airline
 let g:airline#extensions#tabline#enbaled = 1
+let g:airline_theme = 'gruvbox'
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
