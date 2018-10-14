@@ -41,7 +41,10 @@ set shiftwidth=4
 set tabstop=4
 set backspace=indent,eol,start
 set wildmenu
+set mouse=a
+
 filetype plugin on
+
 
 "" == Colors and Syntax ==
 colorscheme gruvbox
@@ -66,7 +69,7 @@ autocmd InsertLeave * :call ToggleCurLine()
 " ================================ Aliases ====================================
 command! Config e $MYVIMRC
 command! W write
-command! Cd lcd %:p:h
+command! Cd chdir %:p:h
 
 " =============================================================================
 " ================================ Remappings =================================
@@ -97,17 +100,7 @@ nnoremap <C-w> :w<CR>
 nnoremap <C-q> :q<CR>
 nnoremap <C-q><C-q> :q!<CR>
 
-" Nearest pair       " now: targets.vim
-"nnoremap ci" f"ci"
-" nnoremap ci) f)ci)
-" nnoremap ci( f)ci(
-" nnoremap ci{ f}ci{
-" nnoremap ci} f}ci}
-" nnoremap vi" f"vi"
-" nnoremap vi) f)vi)
-" nnoremap vi( f)vi(
-" nnoremap vi{ f)vi{
-" nnoremap vi} f)vi}
+nnoremap <C-x> :bd
 
 " Don't yank when pasting
 vnoremap p "_dP
@@ -120,11 +113,9 @@ nnoremap <C-l> :wincmd l<CR>
 
 " fugitive
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
 
 nnoremap <C-p> :Lexplore<CR>
-
-" don't remember
-"inoremap <C-A> <C-Space>
 
 " == Terminal mode ==
 nnoremap <Leader>] :botright new<CR>:term<CR>i
@@ -134,6 +125,7 @@ tnoremap <Esc> <C-\><C-n>
 " ================================ Plugins ====================================
 " Airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'gruvbox'
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
