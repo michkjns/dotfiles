@@ -30,6 +30,7 @@ call plug#end()
 " ================================ General Settings ===========================
 " set autochdir
 set autoindent
+set diffopt+=vertical
 set clipboard+=unnamedplus
 set inccommand=nosplit
 set list
@@ -41,10 +42,10 @@ set shiftwidth=4
 set tabstop=4
 set backspace=indent,eol,start
 set wildmenu
+set wildmode=list:longest,full
 set mouse=a
 
 filetype plugin on
-
 
 "" == Colors and Syntax ==
 colorscheme gruvbox
@@ -65,11 +66,12 @@ endfunction
 autocmd InsertEnter * :call ToggleCurLine()
 autocmd InsertLeave * :call ToggleCurLine()
 
+autocmd DirChanged global Explore <afile>
+
 " =============================================================================
 " ================================ Aliases ====================================
 command! Config e $MYVIMRC
 command! W write
-command! Cd chdir %:p:h
 
 " =============================================================================
 " ================================ Remappings =================================
@@ -81,6 +83,16 @@ nnoremap ;O O<Enter><Enter><Esc>ki
 nnoremap [v :vertical resize +10<CR>
 nnoremap ]v :vertical resize -10<CR>
 
+nnoremap ;so :so %<CR>
+nnoremap ;;q :q!<CR>
+nnoremap ;r  <C-w>R
+nnoremap ;E  :Explore<CR>
+nnoremap ;f  :find<space>
+nnoremap ;F  :sfind<space>
+nnoremap ;q  :q<CR>
+nnoremap ;w  :w<CR>
+nnoremap ;cd :cd %:p:h<CR>:echo expand('%:p:h')<CR>
+
 " Vimgrep next / previous result
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
@@ -88,8 +100,12 @@ nnoremap [Q :cprev<CR>
 nnoremap ]Q :cnext<CR>
 
 " Cycle buffers
-nnoremap <S-tab> :bN<CR>
-nnoremap <S-q>   :bn<CR>
+nnoremap <S-q> :bN<CR>
+nnoremap <S-w> :bn<CR>
+
+" Cycle tabs
+nnoremap H gt
+nnoremap L gT
 
 " Page Scrolling
 nnoremap <S-j> <C-d>
@@ -99,8 +115,6 @@ nnoremap <S-u> :join<CR>
 nnoremap <C-w> :w<CR>
 nnoremap <C-q> :q<CR>
 nnoremap <C-q><C-q> :q!<CR>
-
-nnoremap <C-x> :bd
 
 " Don't yank when pasting
 vnoremap p "_dP
@@ -112,8 +126,8 @@ nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
 
 " fugitive
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap ;gs :Gstatus<CR><C-w>T
+nnoremap ;gd :Gdiff<CR>
 
 nnoremap <C-p> :Lexplore<CR>
 
@@ -140,9 +154,9 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#documentation_command = "gd"
 
 " netrw
-let g:netrw_banner=0    " hide banner
-let g:netrw_liststyle=3 " tree view
-let g:netrw_browse_split=4
+let g:netrw_banner=0         " hide banner
+let g:netrw_liststyle=3      " tree view
+"let g:netrw_browse_split=4   "  
 
 " vim-go
 let g:go_highlight_functions = 1
