@@ -48,7 +48,7 @@ c.url.searchengines = {'DEFAULT': 'https://startpage.com/do/search?q={}',
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ['xfce4-terminal', '-e', 'vim {file}']
+c.editor.command = ['st', '-e', 'vim {file}']
 
 # CSS border value for hints.
 # Type: String
@@ -70,7 +70,7 @@ c.new_instance_open_target = 'tab'
 # Default monospace fonts. Whenever "monospace" is used in a font
 # setting, it's replaced with the fonts listed here.
 # Type: Font
-c.fonts.monospace = '"xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+c.fonts.monospace = 'Inconsolata, "xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
 
 # Prompt the user for the download location. If set to false,
 # `downloads.location.directory` will be used.
