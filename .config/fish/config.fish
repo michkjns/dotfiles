@@ -1,4 +1,8 @@
+
+#alias vim='nvim'
+#alias vimrc='vim ~/.config/nvim/init.vim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias weather='bash  -c "curl wttr.in/Eindhoven?0"'
 
 alias connect='nmcli dev wifi connect'
 alias i3config 'vim ~/.config/i3/config'
@@ -11,7 +15,7 @@ set EDITOR vim
 set TERMINAL st
 set VIFM $HOME/.config/vifm/vifmrc
 
-set PATH $HOME/bin  $HOME/scripts/ $PATH
+set PATH $HOME/bin $HOME/scripts/ $GOBIN $PATH
 
 function mkcd
 	mkdir $argv; and cd $argv

@@ -5,7 +5,7 @@
 
 # Uncomment this to still load settings configured via autoconfig.yml
 # config.load_autoconfig()
-
+#c.qt.force_software_rendering = True
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'file://*')

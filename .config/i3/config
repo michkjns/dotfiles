@@ -21,14 +21,7 @@ exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc
 exec --no-startup-id nm-applet
 exec --no-startup-id synclient TouchpadOff=1
 exec --no-startup-id sudo NetworkManager
-
-#exec_always --no-startup-id python $HOME/.config/i3/scripts/borderfocus.py
 exec_always --no-startup-id $HOME/.fehbg
-
-# exec --no-startup-id mpd
-# exec --no-startup-id mpdscribble
-# exec i3-msg "workspace  M; append_layout ~/.config/i3/workspace-1.json"
-# exec irssi
 
 exec setxkbmap -option caps:escape
 set $mod Mod4
@@ -61,11 +54,20 @@ bindsym $mod+space exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# workspace focus
+bindsym $mod+p workspace prev
+bindsym $mod+n workspace next
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+#bindsym $mod+i 					[title="(?i)irssi.*"] focus
+#bindsym $mod+m 					[title="(?i)ncmpcpp.*"] focus
+bindsym $mod+Home 				scratchpad show
+bindsym $mod+End 				move scratchpad
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -86,17 +88,16 @@ bindsym $mod+Shift+Up 		move up
 bindsym $mod+Shift+Right 	move right
 
 # Resize
-bindsym $mod+Shift+bracketleft	resize shrink width 5 px or 5 ppt
-bindsym $mod+Shift+i			resize shrink height 5 px or 5 ppt
-bindsym $mod+Shift+o			resize grow height 5 px or 5 ppt
-bindsym $mod+Shift+bracketright	resize grow width 5 px or 5 ppt
-
+bindsym $mod+bracketleft			resize shrink width 5 px or 5 ppt
+bindsym $mod+Shift+bracketleft		resize shrink height 5 px or 5 ppt
+bindsym $mod+Shift+bracketright		resize grow height 5 px or 5 ppt
+bindsym $mod+bracketright			resize grow width 5 px or 5 ppt
 
 # split in horizontal orientation
-bindsym $mod+c split h
+bindsym $mod+\ split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+- split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -182,7 +183,6 @@ bar {
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
-
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
@@ -200,6 +200,12 @@ smart_borders on
 client.focused_inactive #000000 #000000 #000000 #000000 #000000
 client.unfocused        #000000 #000000 #000000 #000000 #000000
 #client.focused			#ffffff #000000 #000000 #ffffff
+
+
+for_window [instance="floater"] floating enable
+#for_window [instance="floater"] 
+
+
 
 # Set inner/outer gaps
 gaps inner 15
