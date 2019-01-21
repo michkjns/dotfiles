@@ -1,15 +1,20 @@
 
 #alias vim='nvim'
-#alias vimrc='vim ~/.config/nvim/init.vim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias weather='bash  -c "curl wttr.in/Eindhoven?0"'
-
 alias connect='nmcli dev wifi connect'
-alias i3config 'vim ~/.config/i3/config'
 alias ls='ls --group-directories-first'
-alias mkd='mkdir -pv'
-alias vimrc='vim ~/.vimrc'
-alias xi='sudo xbps-install'
+alias vim='nvim'
+alias ll='ls -l --color=auto'
+alias pylint='python3 -m pylint'
+
+abbr fishconf 'vim ~/.config/fish/config.fish; and source ~/.config/fish/config.fish'
+abbr i3config 'vim ~/.config/i3/config'
+abbr mkd 'mkdir -pv'
+abbr vimrc 'vim ~/.config/nvim/init.vim'
+abbr weather 'bash  -c "curl wttr.in/Eindhoven?0"'
+abbr todo 'cat ~/notes/todo.md'
+abbr v vim
+abbr gs 'git status'
 
 set EDITOR vim
 set TERMINAL st
@@ -19,6 +24,10 @@ set PATH $HOME/bin $HOME/scripts/ $GOBIN $PATH
 
 function mkcd
 	mkdir $argv; and cd $argv
+end
+
+function notes
+	grep $argv ~/notes/commands.md
 end
 
 function mkmv

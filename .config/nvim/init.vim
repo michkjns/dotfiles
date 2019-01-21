@@ -5,7 +5,7 @@ if has('win32')
 else
 	call plug#begin('~/.config/nvim/plug')
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	Plug 'Valloric/YouCompleteMe'
+	"Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'wellle/targets.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -174,3 +174,7 @@ let g:ycm_confirm_extra_conf = 0
 if has('win32') 
 	let $PATH=$PATH.';C:\Neovim\bin'
 endif
+
+
+autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd FileType python set errorformat=%f:%l:\ %m

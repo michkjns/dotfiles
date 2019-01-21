@@ -33,7 +33,9 @@ bindsym XF86MonBrightnessDown		exec --nostartup-id xbacklight -dec 15
 bindsym XF86MonBrightnessUp			exec --nostartup-id xbacklight -inc 15
 bindsym XF86TouchpadToggle 			exec $touchpadToggle
 bindsym $mod+F5			 			exec $touchpadToggle
-bindsym $mod+133			 			exec ~/reset-display
+bindsym $mod+F8			 		exec ~/bin/selectdisplay
+bindsym XF86Display			 		exec ~/bin/selectdisplay # Key not registered
+bindsym $mod+p			 		exec ~/bin/selectdisplay # https://bugs.launchpad.net/ubuntu/+source/linux/+bug/539477
 
 font pango:monospace 8
 
@@ -42,7 +44,6 @@ floating_modifier $mod
 
 bindsym $mod+Return exec $term 
 bindsym $mod+F1 	exec $web
-bindsym $mod+F8 	exec xrandr --output eDP1 --auto
 
 # kill focused window
 bindsym $mod+q kill
@@ -55,7 +56,7 @@ bindsym $mod+space exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # workspace focus
-bindsym $mod+p workspace prev
+bindsym $mod+b workspace prev
 bindsym $mod+n workspace next
 
 # change focus
