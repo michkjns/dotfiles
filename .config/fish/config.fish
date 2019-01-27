@@ -15,6 +15,7 @@ abbr weather 'bash  -c "curl wttr.in/Eindhoven?0"'
 abbr todo 'cat ~/notes/todo.md'
 abbr v vim
 abbr gs 'git status'
+abbr gg 'git grep'
 
 set EDITOR vim
 set TERMINAL st
