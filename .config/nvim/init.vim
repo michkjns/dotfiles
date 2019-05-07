@@ -5,9 +5,10 @@ if has('win32')
 else
 	call plug#begin('~/.config/nvim/plug')
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	" Plug 'Valloric/YouCompleteMe'
+	"Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'wellle/targets.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
@@ -23,7 +24,6 @@ Plug 'thaerkh/vim-indentguides'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " =============================================================================
@@ -93,8 +93,6 @@ nnoremap ;q  :q<CR>
 nnoremap ;w  :w<CR>
 nnoremap ;cd :cd %:p:h<CR>:echo expand('%:p:h')<CR>
 
-nnoremap <C-p> :Gfiles<CR>
-
 " Vimgrep next / previous result
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
@@ -131,6 +129,8 @@ nnoremap <C-l> :wincmd l<CR>
 nnoremap ;gs :Gstatus<CR><C-w>T
 nnoremap ;gd :Gdiff<CR>
 
+nnoremap <C-p> :Lexplore<CR>
+
 " == Terminal mode ==
 nnoremap <Leader>] :botright new<CR>:term<CR>i
 tnoremap <Esc> <C-\><C-n>
@@ -140,6 +140,10 @@ tnoremap <Esc> <C-\><C-n>
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'gruvbox'
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " Easymotion
 nmap fw <Plug>(easymotion-overwin-w)
@@ -170,3 +174,7 @@ let g:ycm_confirm_extra_conf = 0
 if has('win32') 
 	let $PATH=$PATH.';C:\Neovim\bin'
 endif
+
+
+autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd FileType python set errorformat=%f:%l:\ %m

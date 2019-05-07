@@ -1,0 +1,6 @@
+[grep]
+	lineNumber = true
+
+[color "grep"]
+	linenumber = yellow bold
+	match = red

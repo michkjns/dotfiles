@@ -1,0 +1,16 @@
+only
+
+map ;q :only<CR>
+map ;;q :q<CR>
+
+filextype *.jpg,*.gif,*.jpeg,*.png
+	\ {Open with feh}
+	\ feh %f
+
+filextype *.mp4,*.mkv,*.avi,*.wmv,*.mpeg,*.m4a
+	\ {Open with mpv}
+	\ mpv %f
+
+filextype *.epub,*.pdf,*.mobi,*.azw3
+	\ {Open with zathura}
+	\ zathura %f
