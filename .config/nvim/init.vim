@@ -5,10 +5,10 @@ if has('win32')
 else
 	call plug#begin('~/.config/nvim/plug')
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+	Plug 'z0mbix/vim-shfmt', {'for': 'sh'}
 	"Plug 'Valloric/YouCompleteMe'
 endif
 Plug 'wellle/targets.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
@@ -24,6 +24,7 @@ Plug 'thaerkh/vim-indentguides'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " =============================================================================
@@ -32,17 +33,17 @@ call plug#end()
 set autoindent
 set diffopt+=vertical
 set clipboard+=unnamedplus
+set cursorline
 set inccommand=nosplit
 set list
 set nocompatible
 set number
-set path+=**
 set relativenumber
 set shiftwidth=4
 set tabstop=4
 set backspace=indent,eol,start
 set wildmenu
-set wildmode=list:longest,full
+set wildmode=longest:full,full
 set mouse=a
 
 filetype plugin on
@@ -63,8 +64,8 @@ function! ToggleCurLine ()
 	endif
 endfunction
 
-autocmd InsertEnter * :call ToggleCurLine()
-autocmd InsertLeave * :call ToggleCurLine()
+"autocmd InsertEnter * :call ToggleCurLine()
+hi CursorLine   cterm=NONE ctermbg=237
 
 autocmd DirChanged global Explore <afile>
 
@@ -78,6 +79,7 @@ command! W write
 " Edit vim config in new split
 nnoremap <silent> <leader>ec :vs $MYVIMRC<CR>
 
+nnoremap gb :ls<CR>:b<space>
 nnoremap ;o o<Enter><Esc>ki
 nnoremap ;O O<Enter><Enter><Esc>ki
 nnoremap [v :vertical resize +10<CR>
@@ -88,10 +90,17 @@ nnoremap ;;q :q!<CR>
 nnoremap ;r  <C-w>R
 nnoremap ;E  :Explore<CR>
 nnoremap ;f  :find<space>
-nnoremap ;F  :sfind<space>
+nnoremap ;F  :vert sf<space>
 nnoremap ;q  :q<CR>
 nnoremap ;w  :w<CR>
 nnoremap ;cd :cd %:p:h<CR>:echo expand('%:p:h')<CR>
+
+nnoremap ;e  :e<space>
+nnoremap ;v  :v<space>
+nnoremap ;t  :tabe<space>
+nnoremap ,e :e <C-R>=expand('%:p:h') . "/"<CR>
+nnoremap ,v :vs <C-R>=expand('%:p:h') . "/"<CR>
+nnoremap ,t :tabe <C-R>=expand('%:p:h') . "/"<CR>
 
 " Vimgrep next / previous result
 nnoremap [q :cprev<CR>
@@ -112,7 +121,6 @@ nnoremap <S-j> <C-d>
 nnoremap <S-k> <C-u>
 
 nnoremap <S-u> :join<CR>
-nnoremap <C-w> :w<CR>
 nnoremap <C-q> :q<CR>
 nnoremap <C-q><C-q> :q!<CR>
 
@@ -147,7 +155,8 @@ let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " Easymotion
 nmap fw <Plug>(easymotion-overwin-w)
-nmap / <Plug>(incsearch-easymotion-/)
+nmap g/ <Plug>(incsearch-easymotion-/)
+"noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
 " jedi
 let g:jedi#completions_command = "<C-Space>"
@@ -174,7 +183,6 @@ let g:ycm_confirm_extra_conf = 0
 if has('win32') 
 	let $PATH=$PATH.';C:\Neovim\bin'
 endif
-
 
 autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
 autocmd FileType python set errorformat=%f:%l:\ %m

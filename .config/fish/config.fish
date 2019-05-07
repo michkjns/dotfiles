@@ -1,3 +1,4 @@
+source ~/.config/fish/ssh_agent_start.fish
 
 #alias vim='nvim'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -18,10 +19,11 @@ abbr gs 'git status'
 abbr gg 'git grep'
 
 set EDITOR vim
-set TERMINAL st
+set TERMINAL xterm-termite
 set VIFM $HOME/.config/vifm/vifmrc
 
 set PATH $HOME/bin $HOME/scripts/ $GOBIN $PATH
+set XDG_CONFIG_HOME $HOME/.config
 
 function mkcd
 	mkdir $argv; and cd $argv
