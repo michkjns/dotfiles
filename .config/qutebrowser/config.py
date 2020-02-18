@@ -5,7 +5,7 @@
 
 # Uncomment this to still load settings configured via autoconfig.yml
 # config.load_autoconfig()
-#c.qt.force_software_rendering = True
+c.qt.force_software_rendering = 'chromium'
 # Enable JavaScript.
 # Type: Bool
 config.set('content.javascript.enabled', True, 'file://*')
@@ -36,10 +36,9 @@ c.search.ignore_case = 'smart'
 # `:open google qutebrowser`.
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://startpage.com/do/search?q={}',
-						'yt': 'https://youtube.com/results?search_query={}',
-						'8ch': 'https://8ch.net/{}',
-                                                'osm': 'https://www.openstreetmap.org/search?query={}',
-                                                'bing': 'https://www.bing.com/search?q={}'}
+                       'yt': 'https://youtube.com/results?search_query={}',
+                       'osm': 'https://www.openstreetmap.org/search?query={}',
+                       'bing': 'https://www.bing.com/search?q={}'}
 
 # Editor (and arguments) to use for the `open-editor` command. The
 # following placeholders are defined: * `{file}`: Filename of the file
